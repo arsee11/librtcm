@@ -64,7 +64,6 @@ suppression_filter.cc
 suppression_gain.cc
 transparent_mode.cc
 vector_math_avx2.cc
-
 )
 
 add_library(${PROJECT_NAME} STATIC ${BASE_SRCS})
