@@ -2,7 +2,11 @@
 project(webrtc_audio_processing)
 
 add_subdirectory(ns)
-add_subdirectory(aec3)
+
+if(${RTCM_AVX2_ENABLE})
+    add_subdirectory(aec3)
+endif()
+
 add_subdirectory(aecm)
 
 

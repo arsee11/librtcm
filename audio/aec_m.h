@@ -34,7 +34,7 @@ public:
 
     virtual void processFarEnd(int16_t* audio, size_t frame_size) = 0;
 
-    virtual void processNearEnd(const int16_t* audio, int16_t* out, size_t frame_size)=0;
+    virtual void processNearEnd(const int16_t* audio, int16_t* out, size_t frame_size, int delay_ms)=0;
 };
 }
 #endif //AEC_M_H

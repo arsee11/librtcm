@@ -23,7 +23,7 @@ public:
 
     void processFarEnd(int16_t* audio, size_t frame_size)override;
 
-    void processNearEnd(const int16_t* audio, int16_t* out, size_t frame_size)override;
+    void processNearEnd(const int16_t* audio, int16_t* out, size_t frame_size, int delay_ms)override;
 
 private:
     int _sample_rate_hz;
@@ -61,7 +61,7 @@ void EchoCancellerMobileImpl::processFarEnd(int16_t *audio, size_t frame_size)
     echo->ProcessRenderAudio(packed_buf);
 }
 
-void EchoCancellerMobileImpl::processNearEnd(const int16_t* audio, int16_t* out, size_t frame_size)
+void EchoCancellerMobileImpl::processNearEnd(const int16_t* audio, int16_t* out, size_t frame_size, int delay_ms)
 {
     webrtc::AudioBuffer buf(_sample_rate_hz,
                     _num_near_channels,
@@ -71,7 +71,7 @@ void EchoCancellerMobileImpl::processNearEnd(const int16_t* audio, int16_t* out,
                     _num_near_channels);
     webrtc::StreamConfig sconf(_sample_rate_hz, _num_near_channels);
     buf.CopyFrom(audio, sconf);
-    echo->ProcessCaptureAudio(&buf, 0);
+    echo->ProcessCaptureAudio(&buf, delay_ms);
     buf.CopyTo(sconf, out);
 }
 

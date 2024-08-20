@@ -7,8 +7,15 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 #set(CMAKE_CXX_FLAGS " --std=c++20 -fPIC -g -fpermissive -march=haswell -fsanitize=address ${CMAKE_CXX_FLAGS}")
 #set(CMAKE_C_FLAGS  "-fPIC -march=haswell -fsanitize=address ${CMAKE_C_FLAGS}")
-set(CMAKE_CXX_FLAGS " --std=c++20 -fPIC -g -fpermissive -mfma -march=haswell ${CMAKE_CXX_FLAGS}")
-set(CMAKE_C_FLAGS  "-fPIC -mfma -march=haswell ${CMAKE_C_FLAGS}")
+
+set(RTCM_AVX2_ENABLE ON)
+if(${RTCM_AVX2_ENABLE})
+    set(CMAKE_CXX_FLAGS " --std=c++20 -fPIC -g -fpermissive -mfma -march=haswell ${CMAKE_CXX_FLAGS}")
+    set(CMAKE_C_FLAGS  "-fPIC -mfma -march=haswell ${CMAKE_C_FLAGS}")
+else()
+    set(CMAKE_CXX_FLAGS " --std=c++20 -fPIC -g -fpermissive -mfma ${CMAKE_CXX_FLAGS}")
+    set(CMAKE_C_FLAGS  "-fPIC -mfma ${CMAKE_C_FLAGS}")
+endif()
 
 
 add_definitions(-D WEBRTC_POSIX)
@@ -33,18 +40,28 @@ add_subdirectory(audio/)
 
 add_library(${PROJECT_NAME} SHARED none.cpp)         
 
-target_link_libraries(${PROJECT_NAME} 
-    -Wl,--whole-archive
+set(DEP_LIBS
     audio
     webrtc_base    
     webrtc_system_wrappers
     webrtc_apm_ns
-    webrtc_apm_aec3
     webrtc_apm_aecm
     webrtc_audio_processing
     webrtc_api
     webrtc_common_audio
     webrtc_deps 
+)
+
+if(${RTCM_AVX2_ENABLE})
+    set(DEP_LIBS
+        webrtc_apm_aec3
+        ${DEP_LIBS}
+    )
+endif()
+
+target_link_libraries(${PROJECT_NAME} 
+    -Wl,--whole-archive
+    ${DEP_LIBS}
     -Wl,--no-whole-archive
 )
 

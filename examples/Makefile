@@ -15,7 +15,9 @@ CC=gcc
 CXX=g++
 INC=-I ../ -I libwave/include/ 
 LIB=-lasan -L libwave/lib/ -lwave -L ../lib/ -lrtcm
+#LIB=-lasan ${LIB}
 CCFLAGS=-g -fsanitize=address
+#CCFLAGS= ${CCFLAGS} -fsanitize=address
 LDFLAGS=-Wl,-rpath ../lib/ -Wl,-rpath libwave/lib/
 
 TARGETS=ns_demo aec_demo aecm_demo

@@ -20,7 +20,8 @@ int main(int argc, char** argv)
 
     size_t sr = 16000;
     size_t nchn = 1;
-    auto aec = rtcm::EchoCancellerMobile::create(rtcm::EchoCancellerMobile::LoudSpeakerphone, sr, nchn);
+    auto aec = rtcm::EchoCancellerMobile::create(
+            rtcm::EchoCancellerMobile::LoudSpeakerphone, sr, nchn);
     
 
     WaveFile* fpn = wave_open(nearf, WAVE_OPEN_READ);
@@ -59,9 +60,20 @@ int main(int argc, char** argv)
                 break;
         }
 
- 
+        // where,
+        //   - t_analyze is the time a frame is passed to processFarEnd() and
+        //     t_render is the time the first sample of the same frame is rendered by
+        //     the audio hardware.
+        //   - t_capture is the time the first sample of a frame is captured by the
+        //     audio hardware and t_process is the time the same frame is passed to
+        //     processNearEnd().
+        int t_render = 0;
+        int t_analyze = 0;
+        int t_process = 0;
+        int t_capture = 0;
+        int delay = (t_render - t_analyze) + (t_process - t_capture);
         int16_t dst[160];
-        aec->processNearEnd(bufn, dst, frame_size);
+        aec->processNearEnd(bufn, dst, frame_size, delay);
         wave_write(fpo, dst, frame_size);
     }
 
