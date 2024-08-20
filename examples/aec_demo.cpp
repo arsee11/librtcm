@@ -51,7 +51,7 @@ int main(int argc, char** argv)
         if(frame_size != 160 ){
                 break;
         }
-        aec->analyzeFarEnd(buff, frame_size);
+        aec->analyzeFarEnd(buff);
 
         int16_t bufn[160];
         frame_size = wave_read(fpn, bufn, 160);
@@ -61,7 +61,7 @@ int main(int argc, char** argv)
 
  
         int16_t dst[160];
-        aec->processNearEnd(bufn, dst, frame_size);
+        aec->processNearEnd(bufn, dst);
         wave_write(fpo, dst, frame_size);
     }
 

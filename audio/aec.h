@@ -8,6 +8,7 @@
 
 namespace rtcm
 {
+//Receives 10 ms frames audio.
 class EchoCanceller
 {
 public:
@@ -23,9 +24,9 @@ public:
 
     virtual ~EchoCanceller()=default;
 
-    virtual void analyzeFarEnd(int16_t* audio, size_t frame_size) = 0;
+    virtual void analyzeFarEnd(int16_t* audio) = 0;
 
-    virtual void processNearEnd(const int16_t* audio, int16_t* out, size_t frame_size)=0;
+    virtual void processNearEnd(const int16_t* audio, int16_t* out)=0;
 };
 }
 #endif //AEC_H

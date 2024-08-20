@@ -21,9 +21,9 @@ public:
         size_t num_near_channels);
 
 
-    void processFarEnd(int16_t* audio, size_t frame_size)override;
+    void processFarEnd(int16_t* audio)override;
 
-    void processNearEnd(const int16_t* audio, int16_t* out, size_t frame_size, int delay_ms)override;
+    void processNearEnd(const int16_t* audio, int16_t* out, int delay_ms)override;
 
 private:
     int _sample_rate_hz;
@@ -45,7 +45,7 @@ EchoCancellerMobileImpl::EchoCancellerMobileImpl(RoutingMode rtm, int sample_rat
     echo->set_routing_mode(static_cast<webrtc::EchoControlMobileImpl::RoutingMode>(rtm));
 }
 
-void EchoCancellerMobileImpl::processFarEnd(int16_t *audio, size_t frame_size)
+void EchoCancellerMobileImpl::processFarEnd(int16_t *audio)
 {
 
     webrtc::AudioBuffer buf(_sample_rate_hz,
@@ -61,7 +61,7 @@ void EchoCancellerMobileImpl::processFarEnd(int16_t *audio, size_t frame_size)
     echo->ProcessRenderAudio(packed_buf);
 }
 
-void EchoCancellerMobileImpl::processNearEnd(const int16_t* audio, int16_t* out, size_t frame_size, int delay_ms)
+void EchoCancellerMobileImpl::processNearEnd(const int16_t* audio, int16_t* out, int delay_ms)
 {
     webrtc::AudioBuffer buf(_sample_rate_hz,
                     _num_near_channels,

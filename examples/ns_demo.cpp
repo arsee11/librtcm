@@ -45,7 +45,7 @@ int main(int argc, char** argv)
                 break;
         }
         int16_t dst[160];
-        ns->process(buf, dst, frame_size);
+        ns->process(buf, dst);
         wave_write(fp2, dst, frame_size);
     }
 

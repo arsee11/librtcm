@@ -10,6 +10,7 @@ namespace rtcm
 {
 enum class SuppressionLevel { k6dB, k12dB, k18dB, k21dB };
 
+//Receives 10 ms frames audio.
 class NoiseSuppressor
 {
 public:
@@ -26,7 +27,7 @@ public:
     virtual ~NoiseSuppressor()=default;
 
     // Applies noise suppression.
-    virtual void process(int16_t* src, int16_t* dst, size_t frame_size)=0;
+    virtual void process(int16_t* src, int16_t* dst)=0;
 };
 }
 #endif //NS_H

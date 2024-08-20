@@ -19,9 +19,9 @@ public:
         size_t num_near_channels);
 
 
-    void analyzeFarEnd(int16_t* audio, size_t frame_size)override;
+    void analyzeFarEnd(int16_t* audio)override;
 
-    void processNearEnd(const int16_t* audio, int16_t* out, size_t frame_size)override;
+    void processNearEnd(const int16_t* audio, int16_t* out)override;
 
 private:
     int _sample_rate_hz;
@@ -44,7 +44,7 @@ EchoCancellerImpl::EchoCancellerImpl(int sample_rate_hz, size_t num_far_channels
         num_near_channels);
 }
 
-void EchoCancellerImpl::analyzeFarEnd(int16_t *audio, size_t frame_size)
+void EchoCancellerImpl::analyzeFarEnd(int16_t *audio)
 {
 
     webrtc::AudioBuffer buf(_sample_rate_hz,
@@ -58,7 +58,7 @@ void EchoCancellerImpl::analyzeFarEnd(int16_t *audio, size_t frame_size)
     echo->AnalyzeRender(&buf);
 }
 
-void EchoCancellerImpl::processNearEnd(const int16_t* audio, int16_t* out, size_t frame_size)
+void EchoCancellerImpl::processNearEnd(const int16_t* audio, int16_t* out)
 {
     webrtc::AudioBuffer buf(_sample_rate_hz,
                     _num_near_channels,
