@@ -24,7 +24,7 @@ public:
     }
 
     // Applies noise suppression.
-    void process(int16_t* src, int16_t* dst, size_t frame_size)override;
+    void process(int16_t* src, int16_t* dst)override;
 
 private:
     std::unique_ptr<webrtc::NoiseSuppressor> _ns;
@@ -32,7 +32,7 @@ private:
     size_t _num_channels;
 };
 
-void NoiseSuppressorImpl::process(int16_t* src, int16_t* dst, size_t frame_size)
+void NoiseSuppressorImpl::process(int16_t* src, int16_t* dst)
 {
     webrtc::AudioBuffer buf(_sample_rate_hz,
                     _num_channels,

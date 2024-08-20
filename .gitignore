@@ -1,3 +1,8 @@
 build/
 lib/
 .vscode
+*.o
+*.wav
+ns_demo
+aec_demo
+aecm_demo

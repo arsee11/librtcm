@@ -12,6 +12,7 @@
 #define MODULES_AUDIO_PROCESSING_AEC3_MATCHED_FILTER_LAG_AGGREGATOR_H_
 
 #include <vector>
+#include <memory>
 
 #include "absl/types/optional.h"
 #include "api/audio/echo_canceller3_config.h"
