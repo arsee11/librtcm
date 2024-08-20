@@ -19,6 +19,10 @@ public:
         size_t num_near_channels);
 
 
+    void setAudioBufferDelay(int delay_ms)override{
+	    echo->SetAudioBufferDelay(delay_ms);
+    }
+
     void analyzeFarEnd(int16_t* audio)override;
 
     void processNearEnd(const int16_t* audio, int16_t* out)override;

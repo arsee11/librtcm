@@ -24,6 +24,7 @@ public:
 
     virtual ~EchoCanceller()=default;
 
+    virtual void setAudioBufferDelay(int delay_ms)=0;
     virtual void analyzeFarEnd(int16_t* audio) = 0;
 
     virtual void processNearEnd(const int16_t* audio, int16_t* out)=0;
