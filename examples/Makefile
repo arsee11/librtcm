@@ -18,7 +18,7 @@ LIB=-lasan -L libwave/lib/ -lwave -L ../lib/ -lrtcm
 CCFLAGS=-g -fsanitize=address
 LDFLAGS=-Wl,-rpath ../lib/ -Wl,-rpath libwave/lib/
 
-TARGETS=ns_demo aec_demo
+TARGETS=ns_demo aec_demo aecm_demo
 
 all: $(TARGETS)
 
@@ -33,6 +33,12 @@ aec_demo:aec_demo.o
 
 aec_demo.o:aec_demo.cpp
 	$(CC) -c $(CCFLAGS) aec_demo.cpp $(INC)
+
+aecm_demo:aecm_demo.o
+	$(CXX) -o aecm_demo aecm_demo.o $(LIB) $(LDFLAGS)
+
+aecm_demo.o:aecm_demo.cpp
+	$(CC) -c $(CCFLAGS) aecm_demo.cpp $(INC)
 
 clean:
 	rm *.o $(TARGETS)

@@ -4,6 +4,7 @@ project(webrtc_common_audio)
 
 set(SRCS
 audio_util.cc
+ring_buffer.c
 ./signal_processing/get_hanning_window.c
 #./signal_processing/complex_bit_reverse_mips.c
 ./signal_processing/get_scaling_square.c

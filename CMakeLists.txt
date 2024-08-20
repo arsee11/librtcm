@@ -40,6 +40,7 @@ target_link_libraries(${PROJECT_NAME}
     webrtc_system_wrappers
     webrtc_apm_ns
     webrtc_apm_aec3
+    webrtc_apm_aecm
     webrtc_audio_processing
     webrtc_api
     webrtc_common_audio

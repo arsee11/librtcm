@@ -5,3 +5,4 @@ lib/
 *.wav
 ns_demo
 aec_demo
+aecm_demo
