@@ -26,10 +26,10 @@ add_definitions(-D WEBRTC_ENABLE_AVX2)
 add_definitions(-D WEBRTC_APM_DEBUG_DUMP=0)
 
 include_directories(webrtc_deps/)
-include_directories(webrtc_deps/absl_inl)
+include_directories(webrtc_deps/absl_inl/absl)
 include_directories(webrtc_deps/webrtc)
-include_directories(webrtc_deps/webrtc/third_party/libsrtp/include)
-include_directories(webrtc_deps/webrtc/third_party/libsrtp/crypto/include)
+#include_directories(webrtc_deps/webrtc/third_party/libsrtp/include)
+#include_directories(webrtc_deps/webrtc/third_party/libsrtp/crypto/include)
 
 include_directories(${PROJECT_SOURCE_DIR})
 include_directories(../)
@@ -49,7 +49,7 @@ set(DEP_LIBS
     webrtc_audio_processing
     webrtc_api
     webrtc_common_audio
-    webrtc_deps 
+    webrtc_absl_deps 
 )
 
 if(${RTCM_AVX2_ENABLE})
