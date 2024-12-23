@@ -1,7 +1,7 @@
 #include <iostream>
 #include <memory>
 
-#include "audio/ns.h"
+#include "audio_p/ns.h"
 #include "wave.h"
 
 using namespace std;

@@ -1,7 +1,7 @@
 #include <iostream>
 #include <memory>
 
-#include "audio/aec_m.h"
+#include "audio_p/aec_m.h"
 #include "wave.h"
 
 using namespace std;

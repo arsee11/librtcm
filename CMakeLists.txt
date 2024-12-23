@@ -36,7 +36,7 @@ include_directories(../)
 
 
 add_subdirectory(webrtc_deps/)
-add_subdirectory(audio/)
+add_subdirectory(audio_p/)
 
 add_library(${PROJECT_NAME} SHARED none.cpp)         
 
