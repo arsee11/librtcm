@@ -32,16 +32,18 @@ include_directories(webrtc_deps/webrtc)
 #include_directories(webrtc_deps/webrtc/third_party/libsrtp/crypto/include)
 
 include_directories(${PROJECT_SOURCE_DIR})
-include_directories(../)
 
 
 add_subdirectory(webrtc_deps/)
+add_subdirectory(audio_c/)
 add_subdirectory(audio_p/)
 
 add_library(${PROJECT_NAME} SHARED none.cpp)         
 
 set(DEP_LIBS
-    audio
+    audio_c
+    audio_p
+    webrtc_audio_codecs
     webrtc_base    
     webrtc_system_wrappers
     webrtc_apm_ns

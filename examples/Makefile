@@ -15,12 +15,13 @@ CC=gcc
 CXX=g++
 INC=-I ../ -I libwave/include/ 
 LIB=-lasan -L libwave/build/ -lwave -L ../lib/ -lrtcm
+LIB_RTCM = -lasan -L ../lib/ -lrtcm
 #LIB=-lasan ${LIB}
 CCFLAGS=-g -fsanitize=address
 #CCFLAGS= ${CCFLAGS} -fsanitize=address
 LDFLAGS=-Wl,-rpath ../lib/ -Wl,-rpath libwave/build/
 
-TARGETS=ns_demo aec_demo aecm_demo
+TARGETS=ns_demo aec_demo aecm_demo g711d_demo
 
 all: $(TARGETS)
 
@@ -41,6 +42,14 @@ aecm_demo:aecm_demo.o
 
 aecm_demo.o:aecm_demo.cpp
 	$(CC) -c $(CCFLAGS) aecm_demo.cpp $(INC)
+
+
+g711d_demo:g711d_demo.o
+	$(CXX) -o g711d_demo g711d_demo.o $(LIB_RTCM) $(LDFLAGS)
+
+g711d_demo.o:g711d_demo.cpp
+	$(CC) -c $(CCFLAGS) g711d_demo.cpp $(INC)
+
 
 clean:
 	rm *.o $(TARGETS)

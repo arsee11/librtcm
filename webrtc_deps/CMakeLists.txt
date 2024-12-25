@@ -205,8 +205,17 @@ set(SRCS
 webrtc/api/audio/audio_frame.cc
 webrtc/api/audio/channel_layout.cc
 webrtc/api/audio/echo_canceller3_config.cc
-#webrtc/api/field_trials_registry.cc
-#webrtc/api/rtp_parameters.cc
+webrtc/api/audio_codecs/audio_format.cc
+webrtc/api/audio_codecs/audio_decoder.cc
+webrtc/api/environment/environment_factory.cc
+webrtc/api/audio_codecs/g711/audio_decoder_g711.cc
+webrtc/api/audio_codecs/L16/audio_decoder_L16.cc
+webrtc/api/field_trials_registry.cc
+#webrtc/api/task_queue/default_task_queue_factory_gcd.cc
+webrtc/api/task_queue/default_task_queue_factory_stdlib.cc
+webrtc/api/task_queue/task_queue_base.cc
+webrtc/api/transport/field_trial_based_config.cc
+webrtc/api/rtc_event_log/rtc_event_log.cc
 )
 add_library(${PROJECT_NAME} STATIC ${SRCS})
 
@@ -216,6 +225,7 @@ set(SRCS
 webrtc/system_wrappers/source/cpu_features.cc
 webrtc/system_wrappers/source/field_trial.cc
 webrtc/system_wrappers/source/metrics.cc
+webrtc/system_wrappers/source/clock.cc
 )
 add_library(${PROJECT_NAME} STATIC ${SRCS})
 
@@ -225,15 +235,33 @@ set(SRCS
 webrtc/rtc_base/experiments/field_trial_parser.cc
 webrtc/rtc_base/memory/aligned_malloc.cc
 webrtc/rtc_base/checks.cc
+webrtc/rtc_base/event.cc
+webrtc/rtc_base/event_tracer.cc
 webrtc/rtc_base/logging.cc
+webrtc/rtc_base/platform_thread.cc
 webrtc/rtc_base/platform_thread_types.cc
 webrtc/rtc_base/time_utils.cc
 webrtc/rtc_base/string_encode.cc
 webrtc/rtc_base/string_utils.cc
 webrtc/rtc_base/strings/string_builder.cc
+webrtc/rtc_base/synchronization/sequence_checker_internal.cc
+webrtc/rtc_base/synchronization/yield_policy.cc
 webrtc/rtc_base/race_checker.cc
 webrtc/rtc_base/system_time.cc
+webrtc/rtc_base/task_queue_stdlib.cc
 )
 add_library(${PROJECT_NAME} STATIC ${SRCS})
 
+project(webrtc_audio_codecs)
+set(SRCS
+webrtc/modules/audio_coding/codecs/legacy_encoded_audio_frame.cc
+webrtc/modules/audio_coding/codecs/g711/audio_decoder_pcm.cc
+#webrtc/modules/audio_coding/codecs/g711/audio_encoder_pcm.cc
+webrtc/modules/audio_coding/codecs/g711/g711_interface.c
+webrtc/modules/audio_coding/codecs/pcm16b/audio_decoder_pcm16b.cc
+#webrtc/modules/audio_coding/codecs/pcm16b/audio_encoder_pcm16b.cc
+webrtc/modules/audio_coding/codecs/pcm16b/pcm16b.c
+webrtc/modules/audio_coding/codecs/pcm16b/pcm16b_common.cc
 
+)
+add_library(${PROJECT_NAME} STATIC ${SRCS})

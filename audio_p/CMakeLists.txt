@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(audio LANGUAGES CXX)
+project(audio_p LANGUAGES CXX)
 
 set(AUDIO_SRCS
     ns.cpp
