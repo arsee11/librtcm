@@ -1,6 +1,0 @@
-[submodule "webrtc_deps/webrtc"]
-	path = webrtc_deps/webrtc
-	url = https://webrtc.googlesource.com/src
-[submodule "webrtc_deps/absl_inl/absl"]
-	path = webrtc_deps/absl_inl/absl
-	url = https://github.com/abseil/abseil-cpp.git

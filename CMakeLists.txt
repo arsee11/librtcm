@@ -17,6 +17,9 @@ else()
     set(CMAKE_C_FLAGS  "-fPIC -mfma ${CMAKE_C_FLAGS}")
 endif()
 
+find_package(PkgConfig)
+pkg_search_module(WEBRTC REQUIRED webrtc_more)
+message("webrtc_more found dir:${WEBRTC_INCLUDE_DIRS}")
 
 add_definitions(-D WEBRTC_POSIX)
 add_definitions(-D WEBRTC_USE_EPOLL)
@@ -25,11 +28,9 @@ add_definitions(-D _M_X64)
 add_definitions(-D WEBRTC_ENABLE_AVX2)
 add_definitions(-D WEBRTC_APM_DEBUG_DUMP=0)
 
-include_directories(webrtc_deps/)
-include_directories(webrtc_deps/absl_inl/absl)
-include_directories(webrtc_deps/webrtc)
-#include_directories(webrtc_deps/webrtc/third_party/libsrtp/include)
-#include_directories(webrtc_deps/webrtc/third_party/libsrtp/crypto/include)
+include_directories(${WEBRTC_INCLUDE_DIRS} )
+include_directories(${WEBRTC_INCLUDE_DIRS}/absl_inl/absl)
+include_directories(${WEBRTC_INCLUDE_DIRS}/webrtc)
 
 include_directories(${PROJECT_SOURCE_DIR})
 
