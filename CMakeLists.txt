@@ -49,6 +49,7 @@ set(DEP_LIBS
     webrtc_system_wrappers
     webrtc_apm_ns
     webrtc_apm_aecm
+    webrtc_apm_vad
     webrtc_audio_processing
     webrtc_api
     webrtc_common_audio

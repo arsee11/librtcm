@@ -26,10 +26,11 @@ int main(int argc, char** argv)
         return 1;
     }
 
+    const int n_read=1600*2;
     while(true){
-        int16_t buf[160];
-        size_t frame_size = wave_read(fp1, buf, 160);
-        if(frame_size != 160 ){
+        int16_t buf[n_read];
+        size_t frame_size = wave_read(fp1, buf, n_read);
+        if(frame_size != n_read){
                 break;
         }
         bool is_activity = vad->process(buf, frame_size, sr);

@@ -1,8 +1,8 @@
-///ns.h
+///vad.h
 //
 
-#ifndef NS_H
-#define NS_H
+#ifndef VAD_H
+#define VAD_H
 
 #include <memory>
 
@@ -30,4 +30,4 @@ public:
     virtual bool process(int16_t* audio, size_t nframes, size_t sample_rate_hz)=0;
 };
 }
-#endif //NS_H
+#endif //VAD_H

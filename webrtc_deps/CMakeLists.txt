@@ -43,6 +43,20 @@ set(SRCS
 add_library(${PROJECT_NAME} STATIC ${SRCS})
 
 
+project(webrtc_apm_vad)
+set(SRCS
+${WEBRTC_INCLUDE_DIRS}/webrtc/modules/audio_processing/vad/gmm.cc
+${WEBRTC_INCLUDE_DIRS}/webrtc/modules/audio_processing/vad/pitch_based_vad.cc
+${WEBRTC_INCLUDE_DIRS}/webrtc/modules/audio_processing/vad/pitch_internal.cc
+${WEBRTC_INCLUDE_DIRS}/webrtc/modules/audio_processing/vad/pole_zero_filter.cc
+${WEBRTC_INCLUDE_DIRS}/webrtc/modules/audio_processing/vad/standalone_vad.cc
+${WEBRTC_INCLUDE_DIRS}/webrtc/modules/audio_processing/vad/vad_audio_proc.cc
+${WEBRTC_INCLUDE_DIRS}/webrtc/modules/audio_processing/vad/vad_circular_buffer.cc
+${WEBRTC_INCLUDE_DIRS}/webrtc/modules/audio_processing/vad/voice_activity_detector.cc
+)
+add_library(${PROJECT_NAME} STATIC ${SRCS})
+
+
 project(webrtc_audio_processing)
 set(SRCS
 ${WEBRTC_INCLUDE_DIRS}/webrtc/modules/audio_processing/audio_buffer.cc
@@ -196,6 +210,11 @@ ${WEBRTC_INCLUDE_DIRS}/webrtc/common_audio/resampler/push_sinc_resampler.cc
 ${WEBRTC_INCLUDE_DIRS}/webrtc/common_audio/resampler/push_resampler.cc
 ${WEBRTC_INCLUDE_DIRS}/webrtc/common_audio/resampler/sinc_resampler_avx2.cc
 ${WEBRTC_INCLUDE_DIRS}/webrtc/common_audio/resampler/sinc_resampler_sse.cc
+${WEBRTC_INCLUDE_DIRS}/webrtc/common_audio/vad/vad_core.c
+${WEBRTC_INCLUDE_DIRS}/webrtc/common_audio/vad/vad_filterbank.c
+${WEBRTC_INCLUDE_DIRS}/webrtc/common_audio/vad/vad_gmm.c
+${WEBRTC_INCLUDE_DIRS}/webrtc/common_audio/vad/vad_sp.c
+${WEBRTC_INCLUDE_DIRS}/webrtc/common_audio/vad/webrtc_vad.c
 )
 add_library(${PROJECT_NAME} STATIC ${SRCS})
 
@@ -262,6 +281,10 @@ ${WEBRTC_INCLUDE_DIRS}/webrtc/modules/audio_coding/codecs/pcm16b/audio_decoder_p
 #${WEBRTC_INCLUDE_DIRS}/webrtc/modules/audio_coding/codecs/pcm16b/audio_encoder_pcm16b.cc
 ${WEBRTC_INCLUDE_DIRS}/webrtc/modules/audio_coding/codecs/pcm16b/pcm16b.c
 ${WEBRTC_INCLUDE_DIRS}/webrtc/modules/audio_coding/codecs/pcm16b/pcm16b_common.cc
+${WEBRTC_INCLUDE_DIRS}/webrtc/modules/audio_coding/codecs/isac/main/source/isac_vad.c
+${WEBRTC_INCLUDE_DIRS}/webrtc/modules/audio_coding/codecs/isac/main/source/filter_functions.c
+${WEBRTC_INCLUDE_DIRS}/webrtc/modules/audio_coding/codecs/isac/main/source/pitch_estimator.c
+${WEBRTC_INCLUDE_DIRS}/webrtc/modules/audio_coding/codecs/isac/main/source/pitch_filter.c
 
 )
 add_library(${PROJECT_NAME} STATIC ${SRCS})
