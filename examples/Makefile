@@ -21,7 +21,7 @@ CCFLAGS=-g -fsanitize=address
 #CCFLAGS= ${CCFLAGS} -fsanitize=address
 LDFLAGS=-Wl,-rpath ../lib/ -Wl,-rpath libwave/build/
 
-TARGETS=ns_demo aec_demo aecm_demo g711d_demo
+TARGETS=ns_demo aec_demo aecm_demo vad_demo g711d_demo
 
 all: $(TARGETS)
 
@@ -43,6 +43,11 @@ aecm_demo:aecm_demo.o
 aecm_demo.o:aecm_demo.cpp
 	$(CC) -c $(CCFLAGS) aecm_demo.cpp $(INC)
 
+vad_demo:vad_demo.o
+	$(CXX) -o vad_demo vad_demo.o $(LIB) $(LDFLAGS)
+
+vad_demo.o:vad_demo.cpp
+	$(CC) -c $(CCFLAGS) vad_demo.cpp $(INC)
 
 g711d_demo:g711d_demo.o
 	$(CXX) -o g711d_demo g711d_demo.o $(LIB_RTCM) $(LDFLAGS)

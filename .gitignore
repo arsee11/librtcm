@@ -3,7 +3,9 @@ lib/
 .vscode
 *.o
 *.wav
+*.pcm
 ns_demo
 aec_demo
 aecm_demo
 g711d_demo
+vad_demo

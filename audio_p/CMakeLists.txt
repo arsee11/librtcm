@@ -5,6 +5,7 @@ project(audio_p LANGUAGES CXX)
 set(AUDIO_SRCS
     ns.cpp
     aec_m.cpp
+    vad.cpp
 )
 
 if(${RTCM_AVX2_ENABLE})
