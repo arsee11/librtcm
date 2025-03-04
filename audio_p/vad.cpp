@@ -42,7 +42,7 @@ bool VadProcessorImpl::process(int16_t* audio, size_t nframes, size_t sample_rat
 
     mean_probability /= num_chunks;
 
-    std::cout<<"mean_probability:"<<mean_probability<<std::endl;  
+    //std::cout<<"mean_probability:"<<mean_probability<<std::endl;  
 
     return (mean_probability > kMeanSpeechProbability ? true : false);
 }
