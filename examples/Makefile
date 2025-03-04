@@ -14,10 +14,11 @@
 CC=gcc
 CXX=g++
 INC=-I ../ -I libwave/include/ 
-LIB=-lasan -L libwave/build/ -lwave -L ../lib/ -lrtcm
-LIB_RTCM = -lasan -L ../lib/ -lrtcm
-#LIB=-lasan ${LIB}
-CCFLAGS=-g -fsanitize=address
+LIB= -L libwave/build/ -lwave -L ../lib/ -lrtcm
+LIB_RTCM = -L ../lib/ -lrtcm
+CCFLAGS=-g 
+#LIB = -lasan ${LIB}
+#LIB_RTCM = -lasan ${LIB_RTCM}
 #CCFLAGS= ${CCFLAGS} -fsanitize=address
 LDFLAGS=-Wl,-rpath ../lib/ -Wl,-rpath libwave/build/
 
