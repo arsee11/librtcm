@@ -8,7 +8,7 @@ set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 #set(CMAKE_CXX_FLAGS " --std=c++20 -fPIC -g -fpermissive -march=haswell -fsanitize=address ${CMAKE_CXX_FLAGS}")
 #set(CMAKE_C_FLAGS  "-fPIC -march=haswell -fsanitize=address ${CMAKE_C_FLAGS}")
 
-set(RTCM_AVX2_ENABLE ON)
+set(RTCM_AVX2_ENABLE OFF)
 if(${RTCM_AVX2_ENABLE})
     set(CMAKE_CXX_FLAGS " --std=c++20 -fPIC -g -fpermissive -mfma -march=haswell ${CMAKE_CXX_FLAGS}")
     set(CMAKE_C_FLAGS  "-fPIC -mfma -march=haswell ${CMAKE_C_FLAGS}")
